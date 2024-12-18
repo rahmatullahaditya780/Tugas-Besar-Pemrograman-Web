@@ -1,0 +1,757 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  background-color: #0b0b2c;
+  color: #ffffff;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Navbar Styling */
+header {
+  background-color: #0b0b2c;
+  padding: 10px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+  margin: 0 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #bdbdbd;
+  padding: 10px 15px;
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links li.active a {
+  background-color: #e53935;
+  color: #ffffff;
+  border-radius: 3px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #e53935;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 105%;
+  left: 0;
+  background-color: #e53935; /* Background putih untuk default */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 100%;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  margin: 0;
+}
+
+.dropdown-menu li a {
+  color: #333;
+  text-align: center;
+  padding: 10px 20px;
+  display: block;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+/* Submenu Aktif */
+.dropdown-menu li.active a {
+  background-color: #e53935;
+  color: #ffffff;
+}
+
+/* Dropdown Trigger */
+.nav-links li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Logo Styling */
+.logo {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.logo span {
+  color: #e53935;
+}
+
+/* Hero Section */
+.hero {
+  background: url("normal-breadcrumb.jpg") no-repeat center center/cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #ff5733;
+  color: #fff;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #c44123;
+}
+
+/* Main Content */
+.anime-section {
+  padding: 20px;
+  background: #1c1c1c;
+}
+
+.anime-section h2 {
+  margin-bottom: 10px;
+  color: #f9f9f9;
+}
+
+.anime-list {
+  padding: 2rem;
+  text-align: center;
+}
+
+.anime-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex; /* Ubah menjadi flexbox */
+  justify-content: center; /* Pusatkan item secara horizontal */
+  align-items: center; /* Pusatkan item secara vertikal */
+  flex-wrap: wrap; /* Membungkus item jika ruang terbatas */
+  gap: 4rem; /* Jarak antar item */
+  margin-top: 1.5rem;
+}
+
+.anime-item {
+  position: center;
+  width: 250px;
+  height: 350px;
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.anime-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.anime-item:hover {
+  transform: scale(1.05);
+}
+
+.anime-item h3 {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #fff;
+}
+
+.anime-item h4 {
+  font-size: 1.2rem;
+  color: #fff;
+}
+.anime-details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Efek hover animasi pulse */
+[data-bss-hover-animate="pulse"] {
+  transition: transform 0.3s ease-in-out;
+}
+[data-bss-hover-animate="pulse"]:hover {
+  transform: scale(1.05);
+}
+
+/* Efek animasi zoom-in */
+[data-aos="zoom-in"] {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+[data-aos="zoom-in"].aos-animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Card Styling */
+.card {
+  background-color: #0b0b2c;
+  border: 1px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Card Image */
+.card-img-top {
+  object-fit: cover;
+}
+
+/* Text Styling */
+.text-nowrap {
+  white-space: nowrap;
+}
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text-primary-emphasis {
+  color: #ff5733; /* Warna penekanan teks */
+}
+.text-muted {
+  color: #aaa;
+}
+.fw-bold {
+  font-weight: bold;
+}
+
+/* Rounded Circle Image */
+.rounded-circle {
+  border-radius: 50%;
+}
+
+/* Hover Effect */
+.anime-item:hover img {
+  transform: scale(1.1);
+}
+
+.anime-item:hover .anime-details {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Container Styling */
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Login Section with Background */
+.login-spad {
+  background: url("anime-watch.jpg") no-repeat center center/cover;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Left and Right Section */
+.left-section,
+.right-section {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Heading Styling */
+.login__form h2,
+.login__register h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+/* Buttons for Login and Register */
+.btn-login,
+.btn-register {
+  background-color: #e53935;
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-login:hover,
+.btn-register:hover {
+  background-color: #c62828;
+  transform: translateY(-2px);
+}
+
+/* Forgot Password Styling */
+.forgot-password a {
+  display: block;
+  font-size: 0.9rem;
+  color: #c62828;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.forgot-password a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* OR Divider and Social Login Section */
+.extra-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.divider {
+  font-size: 1rem;
+  color: #aaa;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+/* Social Login Buttons */
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-login button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 300px;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Social Buttons Color */
+.social-login .facebook {
+  background-color: #3b5998;
+}
+
+.social-login .facebook:hover {
+  background-color: #2d4373;
+}
+
+.social-login .google {
+  background-color: #db4437;
+}
+
+.social-login .google:hover {
+  background-color: #b93124;
+}
+
+.social-login .twitter {
+  background-color: #1da1f2;
+}
+
+.social-login .twitter:hover {
+  background-color: #0c85d0;
+}
+
+/* Icons within Buttons */
+.social-login button i {
+  font-size: 1.5rem; /* Ukuran ikon */
+  color: #ffffff;
+}
+
+.social-login button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* List Name Title */
+.section-title h5 {
+  color: #e53935;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  border-left: 3px solid #e53935;
+  padding-left: 10px;
+}
+
+/* Kontainer Utama */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Gambar/Video Player */
+.anime__video__player {
+  flex: 2;
+  max-width: 70%;
+  border: 2px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.anime__video__player img {
+  width: 100%;
+  height: 400px;
+  display: block;
+}
+
+/* Episode List */
+.anime__details__episodes {
+  flex: 1;
+  max-width: 30%;
+  height: 400px;
+  background-color: #1c1c1c;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.anime__details__episodes h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.anime__details__episodes ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.anime__details__episodes li {
+  background-color: #27293d;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.anime__details__episodes li:hover {
+  background-color: #e53935;
+  color: #fff;
+}
+
+#detail_anime {
+  text-align: center;
+}
+
+/* Review Styling */
+.anime__review__item {
+  display: flex;
+  align-items: flex-start;
+  background: #27293d;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.anime__review__item:hover {
+  transform: translateY(-5px);
+}
+
+.anime__review__item__pic {
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.anime__review__item__pic img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.anime__review__item__text h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.anime__review__item__text span {
+  font-size: 0.8rem;
+  color: #bdbdbd;
+  margin-left: 10px;
+}
+
+.anime__review__item__text p {
+  color: #bdbdbd;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Comment Form */
+.anime__details__form textarea {
+  width: 100%;
+  height: 100px;
+  background: #27293d;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  outline: none;
+  resize: none;
+}
+
+.anime__details__form button {
+  background-color: #e53935;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.anime__details__form button:hover {
+  background-color: #c62828;
+}
+
+.bg-custom-gradient {
+  background: linear-gradient(rgba(0, 123, 255, 0.2), rgba(0, 123, 255, 0.2)),
+    url("https://cdn.bootstrapstudio.io/placeholders/1400x800.png") center /
+      cover;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.bg-custom-gradient h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.bg-custom-gradient p {
+  font-size: 1rem;
+  color: #ddd;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links li {
+    margin: 5px 0;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .anime-grid {
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .anime-item {
+    width: 90%;
+    height: auto;
+  }
+
+  .anime__video__player,
+  .anime__details__episodes {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    font-size: 14px;
+  }
+
+  .navbar {
+    padding: 10px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1rem;
+  }
+
+  .anime-item {
+    width: 100%;
+  }
+
+  .login-spad {
+    min-height: 300px;
+  }
+
+  .social-login button {
+    width: 100%;
+  }
+
+  .anime__details__episodes {
+    height: auto;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+}
