@@ -1,0 +1,22 @@
+<nav class="navbar" style="display: flex; align-items: center; justify-content: space-between;">
+    <div class="logo" style="margin-right: auto;">AR<span>nime</span></div>
+    <ul class="nav-links" style="list-style: none; display: flex; align-items: center; margin: 0; padding: 0;">
+        <li style="margin-right: 15px;">
+            <a href="dashboard-user.php" style="text-decoration: none; color: white; background-color: red; padding: 5px 10px; border-radius: 5px;">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#">Categories ▼</a>
+          <ul class="dropdown-menu" id="list_genre">
+              
+          </ul>
+        </li>
+        <li style="display: flex; align-items: center;">
+            <input id="search_anime" type="search" placeholder="Search..." style="padding: 5px; border: 1px solid #ccc; border-radius: 5px;">
+            <a onclick="search_anime()" href="#" class="btn" style="margin-left: 5px; background-color: #FF5733; color: white; padding: 5px 10px; border-radius: 5px; display: flex; align-items: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001a1 1 0 0 0 .192.156l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.156-.192zm-5.242 1.106a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+                </svg>
+            </a>
+        </li>
+    </ul>
+</nav>
